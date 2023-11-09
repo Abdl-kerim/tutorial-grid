@@ -1,0 +1,103 @@
+/* -- IMPORTANTE!!! Siempre empieza tu diseño como si fueses a realizar la pagina para un telefono movil porque: -- */
+/* -- 1- Los navegadores indexan las paginas en base a si el diseño es cito textualmente "mobile first" -- */
+/* -- 1.1- Esto es porque la mayoria de las personas acceden desde un dispositivo movil -- */
+
+/* -- 2- Si realizas el diseño teniendo en cuenta el "mobile first" y ademas haces buen uso de la semantica HTML... --*/
+/* -- ...tendras una alta probabilidad de posicionar mejor en el momento de que un navegador indexe tu web. --*/
+
+/* -- Siempre que puedas evitar un div porque haya una alternativa usala no dudes. El SEO te lo agradecera en la indexacion -- */
+/*--------------------------------------------------------------------------------------------------------------------------------*/
+
+#contenedor {
+	box-sizing: border-box;
+	margin: 0 auto;
+
+	display: grid;
+
+	/* -- Define la cantidad de filas que tendra tu pantalla -- */
+	/* -- En caso de querer utilizar diferentes medidas en los elementos, define las medidas independientemente -- */
+	/* -- Por el contrario si quieres que todos los elementos midan lo mismo puedes hacer uso del selector repeat(num_filas, medida) -->     grid-template-rows: repeat(4, 200px); -- */
+	/* -- En vez de una medida fija (como 200px) puedes poner 'auto' para que se autoredimensionen conforme se añada contenido -- */
+	/* -- Yo voy a definir en este ejemplo una medida para cada fila, lo cual hara que no afecte el tamaño de los demas elementos en caso de que crezca un elemento concreto. -- */
+	grid-template-rows: 200px auto 200px;
+
+
+	/* -- Define la cantidad de columnas que tendra tu pantalla -- */
+	/* -- Tambien se puede hacer uso del selector grid-template-columns: repeat(4, 200px); para que todas las columnas crezcan en igual medida y disminuyan en igual medida -- */
+	/* -- En este ejemplo vamos a dividir la pantalla en 10 columnas de 10% cada una -- */
+	grid-template-columns: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
+
+
+
+	background-color: rgb(17, 17, 17);
+}
+
+p {margin-top: 0; margin-bottom: 0;}
+small {
+	color: white;
+}
+img {
+	/* -- El ancho y alto de las imagenes, es mejor definirlo en el archivo css no en el html -- */
+	width: 100%;
+	height: 200px;
+}
+
+
+#header {
+	/* -- Antes definimos que tendria 200px de alto !!! -- */
+	grid-row: 1/2;
+	grid-column: 1/11;
+
+	background-color: yellow;
+}
+
+#main {
+	/* -- Antes definimos que tendria auto(redimension) de alto... -- */
+	/* -- ...por lo que vamos a ajustar el alto de los elementos que vayamos insertando dentro !!! -- */
+	grid-row: 2/3;
+	grid-column: 1/11;
+
+	background-color: lightblue;
+}
+#main_section {
+	height: auto;
+	/* -- Si utilizas estos selectores comprobaras como si pones una medida fija no tendras problema por la dimension de los demas elementos -- */
+	/*
+	height: 300px;
+	overflow-y: auto; Solo dara scroll al alto en caso de ser necesario. Recuerda "-y" refiere al eje Y.
+	*/
+
+	background-color: rgba(255, 0, 0, 0.5);
+}
+
+#main_article {
+	height: auto;
+
+	/* -- Puedes observar como se puede aplicar display: flex; dentro de un elemento que tiene grid*/
+	display: flex;
+	/* -- Especifica que los elementos sean tipo block -- */
+	flex-direction: column;
+	/* -- Especifica que ocupe todo el ancho -- */
+	justify-content: stretch;
+
+	padding-top: 10px;
+	padding-bottom: 10px;
+
+	background-color: rgba(234, 0, 255, 0.5);
+}
+
+
+#footer {
+	/* -- Antes definimos que tendria 200px de alto !!! -- */
+	grid-row: 3/4;
+	grid-column: 1/11;
+
+
+	display: flex;
+	/* -- Especifica que el elemento debe estar centrado -- */
+	justify-content: center;
+	/* -- Especifica que el elemento ira al final/abajo -- */
+	align-items: flex-end;
+
+	background-color: darkseagreen;
+}
